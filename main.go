@@ -5,6 +5,7 @@ import (
 	"encoding/base64"
 	"fmt"
 	"io/fs"
+	"net/url"
 	"os"
 	"path/filepath"
 	"strings"
@@ -13,10 +14,73 @@ import (
 
 func main() {
 	lines := scan("rules")
-	generate(lines)
+	gfw(lines)
+	clash(lines)
 }
 
-func generate(lines []string) {
+func clash(lines []string) {
+	table := make([]string, 0)
+
+	table = append(table, "payload:")
+
+	f, err := os.OpenFile("clash.txt", os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0644)
+	if err != nil {
+		panic(err)
+	}
+
+	mark := make(map[string]struct{}, 0)
+	for _, v := range lines {
+		h1 := v[0:1]
+		h2 := v[0:2]
+		e1 := v[len(v)-1:]
+
+		if h1 == "\\" { // 正则表达式
+			continue
+		} else if h2 == "@@" || h1 == "!" { // 例外规则 => @@, 注释规则 => !
+			continue
+		} else if h2 == "||" { // 全匹配规则 => ||
+			v = "." + v[2:]
+		} else if v[0:2] == "*." { // 通配符支持 => *
+			v = "." + v[2:]
+		} else if h1 == "|" || e1 == "|" { // 匹配地址开始和结尾规则 => |
+			v = strings.Trim(v, "|")
+			parse, err := url.Parse(v)
+			if err == nil && parse != nil {
+				if parse.Host != "" {
+					v = "." + parse.Host
+				} else {
+					v = "." + v
+				}
+			}
+		}
+
+		h1 = v[0:1]
+		if h1 == "." {
+			v = fmt.Sprintf("  - '+%s'", v)
+		} else {
+			v = fmt.Sprintf("  - %s", v)
+		}
+
+		if _, ok := mark[v]; ok || v == "" {
+			continue
+		}
+
+		mark[v] = struct{}{}
+		table = append(table, v)
+	}
+
+	if _, err = f.WriteString(strings.Join(table, "\n")); err != nil {
+		panic(err)
+	}
+
+	if err = f.Close(); err != nil {
+		panic(err)
+	}
+
+	fmt.Println("clash done")
+}
+
+func gfw(lines []string) {
 	table := make([]string, 0)
 
 	table = append(table, "[AutoProxy 0.2.9]")
@@ -42,7 +106,7 @@ func generate(lines []string) {
 		panic(err)
 	}
 
-	fmt.Println("done")
+	fmt.Println("gfwlist done")
 }
 
 func scan(dir string) []string {
