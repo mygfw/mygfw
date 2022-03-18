@@ -48,3 +48,9 @@ jobs:
           git commit -m "${{ env.RELEASE_NAME }}"
           git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
           git push -f -u origin release
+
+      - name: Purge jsdelivr CDN
+        run: |
+          for file in $(ls *.txt); do
+            curl -s -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@release/${file}"
+          done
