@@ -31,12 +31,14 @@ jobs:
           go run main.go
           mv -f gfwlist.txt ../
           mv -f clash.txt ../
+          mv -f rocket.txt ../
           cd ../ && rm -rf code
 
       - name: Generate gfwlist.txt sha256 hash
         run: |
           sha256sum gfwlist.txt > gfwlist.txt.sha256sum
           sha256sum clash.txt > clash.txt.sha256sum
+          sha256sum rocket.txt > rocket.txt.sha256sum
 
       - name: Git push assets to "release" branch
         run: |

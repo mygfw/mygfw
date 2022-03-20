@@ -5,7 +5,6 @@ import (
 	"encoding/base64"
 	"fmt"
 	"io/fs"
-	"net/url"
 	"os"
 	"path/filepath"
 	"strings"
@@ -16,6 +15,59 @@ func main() {
 	lines := scan("rules")
 	gfw(lines)
 	clash(lines)
+	rocket(lines)
+}
+
+func rocket(lines []string) {
+	f, err := os.OpenFile("rocket.txt", os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0644)
+	if err != nil {
+		panic(err)
+	}
+
+	table := make([]string, 0)
+	table = append(table, "[General]")
+	table = append(table, "ipv6 = false")
+	table = append(table, "bypass-system = true")
+	table = append(table, "skip-proxy = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, localhost, *.local, e.crashlytics.com, captive.apple.com")
+	table = append(table, "bypass-tun = 10.0.0.0/8,100.64.0.0/10,127.0.0.0/8,169.254.0.0/16,172.16.0.0/12,192.0.0.0/24,192.0.2.0/24,192.88.99.0/24,192.168.0.0/16,198.18.0.0/15,198.51.100.0/24,203.0.113.0/24,224.0.0.0/4,255.255.255.255/32")
+	table = append(table, "dns-server = system, 114.114.114.114, 112.124.47.27, 8.8.8.8, 8.8.4.4")
+	table = append(table, "[Rule]\n")
+
+	mark := make(map[string]struct{}, 0)
+	for _, v := range lines {
+		h1 := v[0:1]
+		h2 := v[0:2]
+		if h1 == "!" { // 注释
+			continue
+		} else if h1 == "." { // 域名前缀
+			v = fmt.Sprintf("DOMAIN-SUFFIX,%s,PROXY", v[1:])
+		} else if h2 == "ip" { // ip范围
+			v = fmt.Sprintf("IP-CIDR,%s,PROXY", v[3:])
+		} else { // 固定域名
+			v = fmt.Sprintf("DOMAIN,%s,PROXY", v)
+		}
+
+		if _, ok := mark[v]; ok || v == "" {
+			continue
+		}
+
+		mark[v] = struct{}{}
+		table = append(table, v)
+	}
+
+	table = append(table, "FINAL,DIRECT\n")
+	table = append(table, "[URL Rewrite]")
+	table = append(table, "^http://(www.)?google.cn https://www.google.com 302")
+
+	if _, err = f.WriteString(strings.Join(table, "\n")); err != nil {
+		panic(err)
+	}
+
+	if err = f.Close(); err != nil {
+		panic(err)
+	}
+
+	fmt.Println("rocket done")
 }
 
 func clash(lines []string) {
@@ -32,33 +84,14 @@ func clash(lines []string) {
 	for _, v := range lines {
 		h1 := v[0:1]
 		h2 := v[0:2]
-		e1 := v[len(v)-1:]
-
-		if h1 == "\\" { // 正则表达式
+		if h1 == "!" { // 注释
 			continue
-		} else if h2 == "@@" || h1 == "!" { // 例外规则 => @@, 注释规则 => !
-			continue
-		} else if h2 == "||" { // 全匹配规则 => ||
-			v = "." + v[2:]
-		} else if v[0:2] == "*." { // 通配符支持 => *
-			v = "." + v[2:]
-		} else if h1 == "|" || e1 == "|" { // 匹配地址开始和结尾规则 => |
-			v = strings.Trim(v, "|")
-			parse, err := url.Parse(v)
-			if err == nil && parse != nil {
-				if parse.Host != "" {
-					v = "." + parse.Host
-				} else {
-					v = "." + v
-				}
-			}
-		}
-
-		h1 = v[0:1]
-		if h1 == "." {
-			v = fmt.Sprintf("  - '+%s'", v)
-		} else {
-			v = fmt.Sprintf("  - %s", v)
+		} else if h1 == "." { // 域名前缀
+			v = " - '+." + v[1:] + "'"
+		} else if h2 == "ip" { // ip范围
+			v = " - '" + v[3:] + "'"
+		} else { // 固定域名
+			v = " - " + v[1:]
 		}
 
 		if _, ok := mark[v]; ok || v == "" {
@@ -86,19 +119,35 @@ func gfw(lines []string) {
 	table = append(table, "[AutoProxy 0.2.9]")
 	table = append(table, fmt.Sprintf("! Last Modified: %s", time.Now()))
 	table = append(table, "! Expires: 24h")
-	table = append(table, "! HomePage: https://github.com/mygfw/mygfw\n\n")
+	table = append(table, "! HomePage: https://github.com/mygfw/mygfw\n")
 
-	f, err := os.OpenFile("gfwlist.txt", os.O_RDWR|os.O_CREATE, 0644)
+	f, err := os.OpenFile("gfwlist.txt", os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0644)
 	if err != nil {
 		panic(err)
 	}
 
-	encoder := base64.NewEncoder(base64.StdEncoding, f)
-	if _, err = encoder.Write([]byte(strings.Join(table, "\n"))); err != nil {
-		panic(err)
+	mark := make(map[string]struct{}, 0)
+	for _, v := range lines {
+		h1 := v[0:1]
+		h2 := v[0:2]
+		if h1 == "!" { // 注释
+			continue
+		} else if h1 == "." { // 域名前缀
+			v = "||" + v[1:]
+		} else if h2 == "ip" { // ip范围
+			continue
+		}
+
+		if _, ok := mark[v]; ok || v == "" {
+			continue
+		}
+
+		mark[v] = struct{}{}
+		table = append(table, v)
 	}
 
-	if _, err = encoder.Write([]byte(strings.Join(lines, "\n"))); err != nil {
+	encoder := base64.NewEncoder(base64.StdEncoding, f)
+	if _, err = encoder.Write([]byte(strings.Join(table, "\n"))); err != nil {
 		panic(err)
 	}
 
