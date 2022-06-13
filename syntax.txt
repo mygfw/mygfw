@@ -1,0 +1,8 @@
+1. 匹配主域名
+.domain.com
+
+2. 精确匹配域名
+www.domain.com
+
+3. IP CIDR
+ip,67.198.55.0/24
