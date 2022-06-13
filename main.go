@@ -84,14 +84,13 @@ func clash(lines []string) {
 	for _, v := range lines {
 		h1 := v[0:1]
 		h2 := v[0:2]
-		if h1 == "!" { // 注释
-			continue
-		} else if h1 == "." { // 域名前缀
+		if h1 == "." { // 域名前缀
 			v = " - '+." + v[1:] + "'"
 		} else if h2 == "ip" { // ip范围
-			v = " - '" + v[3:] + "'"
+			//v = " - '" + v[3:] + "'"
+			continue
 		} else { // 固定域名
-			v = " - " + v[1:]
+			v = " - " + v
 		}
 
 		if _, ok := mark[v]; ok || v == "" {
