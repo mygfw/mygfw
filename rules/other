@@ -47,6 +47,7 @@ cdn-mr.contentful.com
 .jetbrains.com
 .toolbox.app
 .synology.com
+.qnap.com
 .docker.com
 .postman.com
 .getpocket.com
@@ -201,3 +202,5 @@ cdn-mr.contentful.com
 .disqus.com
 .disquscdn.com
 .dw.com
+.voanews.com
+.electronjs.org
