@@ -16,7 +16,6 @@
 .reddit.com
 .hostloc.com
 .gravatar.com
-.azureedge.net
 .stackoverflow.com
 .sstatic.net
 .maxmind.com
@@ -219,7 +218,6 @@ cdn-mr.contentful.com
 .resilio.com
 .dapr.io
 .w3.org
-.amazontrust.com
 .epicgames.com
 .jaegertracing.io
 .opentelemetry.io
