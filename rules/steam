@@ -1,4 +1,5 @@
 api.steampowered.com
+test.steampowered.com
 store.steampowered.com
 steamuserimages-a.akamaihd.net
 steamusercontent-a.akamaihd.net
@@ -10,3 +11,4 @@ steamvideo-a.akamaihd.net
 .cm.steampowered.com
 .akamai.steamstatic.com
 .cloudflare.steamstatic.com
+.community.steamstatic.com
