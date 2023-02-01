@@ -13,3 +13,5 @@
 .yarnpkg.com
 .rubygems.org
 .nodesource.com
+.k8s.io
+.pkg.dev
