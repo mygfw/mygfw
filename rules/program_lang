@@ -16,4 +16,7 @@
 .k8s.io
 .pkg.dev
 .kubesphere.io
-
+.rust-lang.org
+.rustup.rs
+.crates.io
+.docs.rs
