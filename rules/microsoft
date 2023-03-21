@@ -1,14 +1,14 @@
 # https://learn.microsoft.com/zh-cn/windows/deployment/do/delivery-optimization-endpoints
 
 .aka.ms
-.bing.com
-.live.net
-.live.com
-.onenote.com
-.windows.com
-.microsoft.net
-.microsoft.com
-.s-microsoft.com
+#.bing.com
+#.live.net
+#.live.com
+#.onenote.com
+#.windows.com
+#.microsoft.net
+#.microsoft.com
+#.s-microsoft.com
 .gvt1.com
 .msauth.net
 
