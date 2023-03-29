@@ -1,6 +1,6 @@
 # https://learn.microsoft.com/zh-cn/windows/deployment/do/delivery-optimization-endpoints
 
-.aka.ms
+#.aka.ms
 #.bing.com
 #.live.net
 #.live.com
@@ -9,19 +9,19 @@
 #.microsoft.net
 #.microsoft.com
 #.s-microsoft.com
-.gvt1.com
-.msauth.net
+#.gvt1.com
+#.msauth.net
 
 #xbox
-.gamepass.com
-.xboxlive.com
-.xbox.com
-.xboxservices.com
-.xboxstudios.com
-.xboxplayanywhere.com
-.xboxgamestudios.com
-.xboxgamepass.com
+#.gamepass.com
+#.xboxlive.com
+#.xbox.com
+#.xboxservices.com
+#.xboxstudios.com
+#.xboxplayanywhere.com
+#.xboxgamestudios.com
+#.xboxgamepass.com
 
 # azure
-.azureedge.net
+#.azureedge.net
 .azurewebsites.net
