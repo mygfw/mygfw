@@ -14,6 +14,12 @@
 loop.microsoft.com
 account.microsoft.com
 wcpstatic.microsoft.com
+.aspnetcdn.com
+.microsoftonline.com
+.msecnd.net
+#.adobedtm.com
+#img-prod-cms-rt-microsoft-com.akamaized.net
+
 
 #xbox
 #.gamepass.com
@@ -26,7 +32,5 @@ wcpstatic.microsoft.com
 #.xboxgamepass.com
 
 # azure
-#.azureedge.net
+.azureedge.net
 .azurewebsites.net
-.microsoftonline.com
-.msecnd.net
