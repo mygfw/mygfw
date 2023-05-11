@@ -11,6 +11,9 @@
 #.s-microsoft.com
 #.gvt1.com
 #.msauth.net
+loop.microsoft.com
+account.microsoft.com
+wcpstatic.microsoft.com
 
 #xbox
 #.gamepass.com
@@ -25,3 +28,4 @@
 # azure
 #.azureedge.net
 .azurewebsites.net
+.microsoftonline.com
