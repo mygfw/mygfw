@@ -26,3 +26,9 @@ You can click the Preview link to take a look at your changes.
 - jsdelivr: [https://cdn.jsdelivr.net/gh/mygfw/mygfw@release/rocket.txt](https://cdn.jsdelivr.net/gh/mygfw/mygfw@release/rocket.txt)
 - github: [https://raw.githubusercontent.com/mygfw/mygfw/release/rocket.txt](https://raw.githubusercontent.com/mygfw/mygfw/release/rocket.txt)
 - cloudflare: [https://ghraw.mygfw.workers.dev/mygfw/mygfw/release/rocket.txt](https://ghraw.mygfw.workers.dev/mygfw/mygfw/release/rocket.txt)
+
+# v2rayNG
+
+- jsdelivr: [https://cdn.jsdelivr.net/gh/mygfw/mygfw@release/v2rayng.txt](https://cdn.jsdelivr.net/gh/mygfw/mygfw@release/v2rayng.txt)
+- github: [https://raw.githubusercontent.com/mygfw/mygfw/release/v2rayng.txt](https://raw.githubusercontent.com/mygfw/mygfw/release/v2rayng.txt)
+- cloudflare: [https://ghraw.mygfw.workers.dev/mygfw/mygfw/release/v2rayng.txt](https://ghraw.mygfw.workers.dev/mygfw/mygfw/release/v2rayng.txt)

@@ -32,13 +32,15 @@ jobs:
           mv -f gfwlist.txt ../
           mv -f clash.txt ../
           mv -f rocket.txt ../
+          mv -f v2rayng.txt ../
           cd ../ && rm -rf code
 
-      - name: Generate gfwlist.txt sha256 hash
+      - name: Generate files sha256 hash
         run: |
           sha256sum gfwlist.txt > gfwlist.txt.sha256sum
           sha256sum clash.txt > clash.txt.sha256sum
           sha256sum rocket.txt > rocket.txt.sha256sum
+          sha256sum v2rayng.txt > v2rayng.txt.sha256sum
 
       - name: Git push assets to "release" branch
         run: |

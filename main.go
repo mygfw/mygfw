@@ -16,6 +16,45 @@ func main() {
 	gfw(lines)
 	clash(lines)
 	rocket(lines)
+	v2rayNG(lines)
+}
+
+func v2rayNG(lines []string) {
+	f, err := os.OpenFile("v2rayng.txt", os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0644)
+	if err != nil {
+		panic(err)
+	}
+
+	table := make([]string, 0)
+	mark := make(map[string]struct{}, 0)
+	for _, v := range lines {
+		h1 := v[0:1]
+		h2 := v[0:2]
+		if h1 == "." { // 域名前缀
+			v = fmt.Sprintf("domain:%s,", v[1:])
+		} else if h2 == "ip" { // ip范围
+			v = fmt.Sprintf("%s,", v[3:])
+		} else { // 固定域名
+			v = fmt.Sprintf("full:%s,", v)
+		}
+
+		if _, ok := mark[v]; ok || v == "" {
+			continue
+		}
+		mark[v] = struct{}{}
+
+		table = append(table, v)
+	}
+
+	if _, err = f.WriteString(strings.Join(table, "\n")); err != nil {
+		panic(err)
+	}
+
+	if err = f.Close(); err != nil {
+		panic(err)
+	}
+
+	fmt.Println("v2rayNG done")
 }
 
 func rocket(lines []string) {
