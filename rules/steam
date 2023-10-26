@@ -12,6 +12,6 @@ steamvideo-a.akamaihd.net
 .steam-chat.com
 .steamcommunity.com
 .cm.steampowered.com
-.akamai.steamstatic.com
-.cloudflare.steamstatic.com
-.community.steamstatic.com
+#.akamai.steamstatic.com
+#.cloudflare.steamstatic.com
+#.community.steamstatic.com
