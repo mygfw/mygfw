@@ -41,5 +41,5 @@ xforgeassets004.xboxlive.com
 #.xboxgamepass.com
 
 # azure
-.azureedge.net
+#.azureedge.net
 .azurewebsites.net

@@ -1,5 +1,5 @@
 .vscode.dev
-.vsassets.io
+#.vsassets.io
 .visualstudio.com
 .vscode-webview.net
 .vscode-cdn.net
