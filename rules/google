@@ -5,7 +5,6 @@
 .google.com.jp
 .google.com.tw
 .gstatic.com
-.googleapis.com
 .googleapps.com
 .telephony.goog
 .googleusercontent.com
@@ -18,9 +17,10 @@
 .recaptcha.net
 .appspot.com
 .blogspot.com
-.googleapis.cn
 .googleadservices.com
 .google.co.th
+.googleapis.com
+#.googleapis.cn
 #.xn--ngstr-lra8j.com
 #services.googleapis.cn
 .google.dev
