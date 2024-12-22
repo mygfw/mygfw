@@ -21,7 +21,8 @@
 .googleapis.cn
 .googleadservices.com
 .google.co.th
-.xn--ngstr-lra8j.com
+#.xn--ngstr-lra8j.com
+#services.googleapis.cn
 .google.dev
 
 # youtube
