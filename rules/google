@@ -4,7 +4,6 @@
 .google.com.sg
 .google.com.jp
 .google.com.tw
-.gstatic.com
 .googleapps.com
 .telephony.goog
 .googleusercontent.com
@@ -14,6 +13,7 @@
 .google
 .googlesource.com
 #.gstatic.cn
+#.gstatic.com
 .recaptcha.net
 .appspot.com
 .blogspot.com
