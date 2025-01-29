@@ -6,7 +6,6 @@
 .google.com.tw
 .googleapps.com
 .telephony.goog
-.googleusercontent.com
 .blogger.com
 .goo.gl
 .doubleclick.net
@@ -23,7 +22,12 @@
 #.googleapis.cn
 #.xn--ngstr-lra8j.com
 #services.googleapis.cn
+play-fe.googleapis.com
 .google.dev
+
+# google-play
+play-fe.googleapis.com
+.googleusercontent.com
 
 # youtube
 .youtube.com
