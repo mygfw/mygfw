@@ -12,7 +12,9 @@ login.steampowered.com
 #.steam-chat.com
 .steamcommunity.com
 #.cm.steampowered.com
-#.akamai.steamstatic.com
-#.cloudflare.steamstatic.com
-#.community.steamstatic.com
-#.steampipe.steamcontent.com
+# temprary
+.akamai.steamstatic.com
+.fastly.steamstatic.com
+.cloudflare.steamstatic.com
+.community.steamstatic.com
+.steampipe.steamcontent.com
