@@ -28,10 +28,20 @@ encrypted-tbn3.gstatic.com
 #services.googleapis.cn
 play-fe.googleapis.com
 .google.dev
+.gv.com
+.gvt0.com
+.gvt1.com
+.gvt2.com
+.gvt3.com
+.gvt5.com
+.gvt6.com
+.gvt7.com
+.gvt9.com
 
 # google-play
 play-fe.googleapis.com
 .googleusercontent.com
+.googleplay.com
 
 # youtube
 .youtube.com
