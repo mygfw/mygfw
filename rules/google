@@ -9,6 +9,7 @@
 .blogger.com
 .goo.gl
 .doubleclick.net
+.goog
 .google
 .googlesource.com
 #.gstatic.cn
@@ -22,8 +23,8 @@ encrypted-tbn3.gstatic.com
 .blogspot.com
 .googleadservices.com
 .google.co.th
-#.googleapis.com
-#.googleapis.cn
+.googleapis.com
+.googleapis.cn
 #.xn--ngstr-lra8j.com
 #services.googleapis.cn
 play-fe.googleapis.com

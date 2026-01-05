@@ -1,4 +1,4 @@
-raw.githubusercontent.com
+.githubusercontent.com
 #.githubassets.com
 #.rawgithub.com
 #.github.blog
@@ -7,4 +7,5 @@ raw.githubusercontent.com
 #.github.io
 #.git.io
 #.githubnext.com
-#.ghcr.io
+.ghcr.io
+.gcr.io

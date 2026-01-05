@@ -6,6 +6,9 @@ location.microsoft.com
 copilot.microsoft.com
 winget.microsoft.com
 .azurewebsites.net
+.winget.microsoft.com
+.microsoftonline.com
+.aka.ms
 
 # xbox
 .xboxservices.com
