@@ -1,4 +1,4 @@
-api.steampowered.com
+#api.steampowered.com
 #help.steampowered.com
 #test.steampowered.com
 login.steampowered.com
@@ -13,8 +13,8 @@ login.steampowered.com
 .steamcommunity.com
 #.cm.steampowered.com
 # temprary
-.akamai.steamstatic.com
-.fastly.steamstatic.com
-.cloudflare.steamstatic.com
-.community.steamstatic.com
+#.akamai.steamstatic.com
+#.fastly.steamstatic.com
+#.cloudflare.steamstatic.com
+#.community.steamstatic.com
 .steampipe.steamcontent.com
